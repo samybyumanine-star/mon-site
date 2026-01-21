@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Solutions | Technologie & Construction</title>
+
+<style>
+
+   BASE & BODY
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    color: #e0e0e0;
+    background-color: #111; 
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    position: fixed;
+    width: 90%;
+    top: 10px;
+    background: rgba(0,0,0,0.7);
+    border-radius: 10px;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #00c3ff;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+nav ul li a {
+    font-size: 17px;
+    position: relative;
+    padding: 5px 0;
+    color: #e0e0e0;
+}
+
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background: #00c3ff;
+    transition: 0.3s;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+header {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("1.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 5%;
+}
+
+.hero-content h1 {
+    font-size: 50px;
+    color: #00c3ff;
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+
+.hero-content button {
+    padding: 14px 30px;
+    font-size: 18px;
+    background: #00c3ff;
+    color: #111;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.hero-content button:hover {
+    background: #e0e0e0;
+}
+
+/* =====================
+   SECTIONS
+===================== */
+section {
+    padding: 80px 8%;
+}
+
+/* =====================
+   NOS SERVICES
+===================== */
+#services .section-title h2 {
+    color: #00c3ff;
+}
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.service-box {
+    background: #1a1a1a;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    transition: 0.3s;
+}
+
+.service-box h3 {
+    margin-bottom: 15px;
+    color: #00c3ff;
+}
+
+.service-box p {
+    font-size: 16px;
+    color: #ccc;
+}
+
+.service-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+}
+
+/* =====================
+   À PROPOS
+===================== */
+#about {
+    background: #1a1a1a;
+    color: #e0e0e0;
+    text-align: center;
+    padding: 100px 8%;
+    border-radius: 15px;
+    margin-top: 60px;
+}
+
+#about h2 {
+    color: #00c3ff;
+    margin-bottom: 30px;
+}
+
+#about p {
+    max-width: 800px;
+    margin: auto;
+    font-size: 18px;
+    color: #ccc;
+    line-height: 1.8;
+}
+
+/* =====================
+   CONTACT
+===================== */
+#contact {
+    text-align: center;
+    margin-top: 60px;
+}
+
+#contact h2 {
+    color: #00c3ff;
+    margin-bottom: 20px;
+}
+
+#contact button {
+    padding: 15px 35px;
+    font-size: 18px;
+    background: #00c3ff;
+    color: #111;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+#contact button:hover {
+    background: #e0e0e0;
+}
+
+/* =====================
+   FOOTER
+===================== */
+footer {
+    background: #111;
+    color: #e0e0e0;
+    text-align: center;
+    padding: 25px;
+}
+
+footer .socials {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+footer .socials a {
+    color: #00c3ff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+footer .socials a:hover {
+    color: #e0e0e0;
+}
+
+/* =====================
+   BAR FLOTTANTE
+===================== */
+.social-floating {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1000;
+}
+
+.social-floating a {
+    background: #00c3ff;
+    color: #111;
+    padding: 10px 12px;
+    border-radius: 5px 0 0 5px;
+    font-weight: bold;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.social-floating a:hover {
+    background: #e0e0e0;
+}
+
+/* =====================
+   ANIMATION
+===================== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(40px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width: 992px) {
+    .hero-content h1 { font-size: 42px; }
+    .hero-content p { font-size: 18px; }
+}
+
+@media (max-width: 768px) {
+    nav ul { display: none; }
+    section { padding: 60px 5%; }
+    .hero-content h1 { font-size: 34px; }
+    .hero-content p { font-size: 16px; }
+    .service-box { padding: 20px; }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 { font-size: 28px; }
+    .hero-content p { font-size: 14px; }
+    #contact button { padding: 12px 25px; font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <div class="logo">Get Solutions</div>
+        <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">À propos</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Solutions <span>Technologiques</span><br>& Construction</h1>
+            <p>Développement • Sécurité • Électricité • Construction • Innovation</p>
+            <button>Nous contacter</button>
+        </div>
+    </div>
+</header>
+
+<section id="services">
+    <div class="section-title">
+        <h2>Nos Services</h2>
+        <p>Des solutions complètes pour les particuliers et les entreprises</p>
+    </div>
+
+    <div class="services">
+        <div class="service-box">
+            <h3>Développement Web</h3>
+            <p>Sites web modernes, professionnels et sécurisés.</p>
+        </div>
+        <div class="service-box">
+            <h3>Développement Mobile</h3>
+            <p>Applications Android & multiplateformes.</p>
+        </div>
+        <div class="service-box">
+            <h3>Sécurité & Réseaux</h3>
+            <p>Installation, protection et maintenance réseau.</p>
+        </div>
+        <div class="service-box">
+            <h3>Électronique</h3>
+            <p>Systèmes électroniques et solutions techniques.</p>
+        </div>
+        <div class="service-box">
+            <h3>Électricité Bâtiment & Industrielle</h3>
+            <p>Installations électriques fiables et conformes.</p>
+        </div>
+        <div class="service-box">
+            <h3>Plomberie & Construction</h3>
+            <p>Solutions complètes pour tous les domaines de la construction.</p>
+        </div>
+    </div>
+</section>
+
+<section id="about">
+    <h2>À propos de Get Solutions</h2>
+    <p>
+        Get Solutions est une entreprise polyvalente spécialisée dans la technologie, 
+        la sécurité, l’ingénierie et les travaux de construction. Nous combinons innovation, 
+        expertise et professionnalisme pour offrir des solutions durables et efficaces, 
+        adaptées aux besoins de chaque client.
+    </p>
+</section>
+
+<section id="contact">
+    <h2>Contactez-nous</h2>
+    <p>Prêt à travailler avec nous ?</p>
+    <button>Trouvez-nous sur ces platesforms à droite</button>
+</section>
+
+<footer>
+    <p>© 2026 Get Solutions — Tous droits réservés</p>
+    <div class="socials">
+        <a href="https://wa.me/+243991610648" target="_blank">WhatsApp</a> |
+        <a href="https://www.facebook.com/@SamByumanine" target="_blank">Facebook</a> |
+        <a href="https://www.instagram.com/@SamByumanine" target="_blank">Instagram</a> |
+        <a href="https://www.youtube.com/channel/@SamyByumanine" target="_blank">YouTube</a>
+    </div>
+</footer>
+
+<div class="social-floating">
+    <a href="https://wa.me/+243991610648" target="_blank">WA</a>
+    <a href="https://www.facebook.com/SamByumanine" target="_blank">FB</a>
+    <a href="https://www.instagram.com/@SamByumanine" target="_blank">IG</a>
+    <a href="https://www.youtube.com/channel/@SamyByumanine" target="_blank">YT</a>
+</div>
+
+<script>
+// Effet WAOUH pour services
+document.querySelectorAll(".service-box").forEach(box => {
+    box.addEventListener("mouseenter", () => {
+        box.style.background = "#222";
+    });
+    box.addEventListener("mouseleave", () => {
+        box.style.background = "#1a1a1a";
+    });
+});
+</script>
+
+</body>
+</html>
